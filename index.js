@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// prevent caching of this module so module.parent is always accurate
+// Prevent caching of this module so module.parent is always accurate
 delete require.cache[__filename];
 const parentFile = module.parent.filename;
 const parentDir = path.dirname(parentFile);
@@ -22,7 +22,7 @@ module.exports = (dir, opts) => {
 	const done = new Set();
 	const ret = {};
 
-	// adhere to the Node.js require algorithm by trying each extension in order
+	// Adhere to the Node.js require algorithm by trying each extension in order
 	for (const ext of Object.keys(require.extensions)) {
 		for (const file of files) {
 			const stem = path.basename(file).replace(/\.\w+$/, '');
@@ -38,7 +38,7 @@ module.exports = (dir, opts) => {
 
 			const exportKey = opts.camelize ? stem.replace(/-(\w)/g, (m, p1) => p1.toUpperCase()) : stem;
 
-			ret[exportKey] = require(fullPath);
+			ret[exportKey] = require(fullPath); // eslint-disable-line import/no-dynamic-require
 			done.add(stem);
 		}
 	}
