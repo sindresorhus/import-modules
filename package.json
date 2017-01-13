@@ -1,6 +1,6 @@
 {
   "name": "req-all",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Require all files in a directory",
   "license": "MIT",
   "repository": "sindresorhus/req-all",
