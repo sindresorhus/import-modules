@@ -38,7 +38,7 @@ module.exports = (dir, opts) => {
 
 			const exportKey = opts.camelize ? stem.replace(/-(\w)/g, (m, p1) => p1.toUpperCase()) : stem;
 
-			ret[exportKey] = require(fullPath); // eslint-disable-line import/no-dynamic-require
+			ret[exportKey] = require(fullPath);
 			done.add(stem);
 		}
 	}
