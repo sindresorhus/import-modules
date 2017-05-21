@@ -1,9 +1,9 @@
 {
-  "name": "req-all",
+  "name": "import-modules",
   "version": "1.0.0",
-  "description": "Require all files in a directory",
+  "description": "Import all modules in a directory",
   "license": "MIT",
-  "repository": "sindresorhus/req-all",
+  "repository": "sindresorhus/import-files",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -19,6 +19,7 @@
     "index.js"
   ],
   "keywords": [
+    "import",
     "require",
     "files",
     "modules",

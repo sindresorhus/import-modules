@@ -1,7 +1,7 @@
 import test from 'ava';
-import m from './';
+import m from '.';
 
-test('default', t => {
+test(t => {
 	t.deepEqual(m('fixture'), {
 		fooFoo: 'foo',
 		barBar: 'bar'
