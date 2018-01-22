@@ -9,7 +9,7 @@ const parentDir = path.dirname(parentFile);
 
 module.exports = (dir, opts) => {
 	dir = path.resolve(parentDir, dir || '');
-	opts = Object.assign({camelize: true}, opts);
+	opts = Object.assign({camelize: true, extensions: ['.js', '.json', '.node']}, opts);
 
 	let files;
 
@@ -22,8 +22,7 @@ module.exports = (dir, opts) => {
 	const done = new Set();
 	const ret = {};
 
-	// Adhere to the Node.js require algorithm by trying each extension in order
-	for (const ext of Object.keys(require.extensions)) {
+	for (const ext of opts.extensions) {
 		for (const file of files) {
 			const stem = path.basename(file).replace(/\.\w+$/, '');
 			const fullPath = path.join(dir, file);
