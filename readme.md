@@ -39,7 +39,7 @@ console.log(modules);
 Type: `string`<br>
 Default: `__dirname`
 
-Directory to import modules from. Unless you've modified [`require.extensions`](https://nodejs.org/api/globals.html#globals_require_extensions), that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
+Directory to import modules from. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
 
 #### options
 
@@ -51,6 +51,13 @@ Type: `boolean`<br>
 Default: `true`
 
 Convert dash-style names (`foo-bar`) to camel-case (`fooBar`).
+
+##### extensions
+
+Type: `array`<br>
+Default: `['.js', '.json', '.node']`
+
+Module extensions white list.
 
 
 ## Related
