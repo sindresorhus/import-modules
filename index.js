@@ -5,48 +5,48 @@ const path = require('path');
 // Prevent caching of this module so module.parent is always accurate
 delete require.cache[__filename];
 const parentFile = module.parent.filename;
-const parentDir = path.dirname(parentFile);
+const parentDirectory = path.dirname(parentFile);
 
-module.exports = (dir, opts) => {
-	dir = path.resolve(parentDir, dir || '');
-	opts = {
+module.exports = (directory, options) => {
+	directory = path.resolve(parentDirectory, directory || '');
+
+	options = {
 		camelize: true,
-		...opts
+		...options
 	};
 
 	let files;
-
 	try {
-		files = fs.readdirSync(dir);
-	} catch (error) {
+		files = fs.readdirSync(directory);
+	} catch (_) {
 		return {};
 	}
 
 	const done = new Set();
-	const ret = {};
+	const returnValue = {};
 
 	// Adhere to the Node.js require algorithm by trying each extension in order
 	// eslint-disable-next-line node/no-deprecated-api
-	for (const ext of Object.keys(require.extensions)) {
+	for (const extension of Object.keys(require.extensions)) {
 		for (const file of files) {
-			const stem = path.basename(file).replace(/\.\w+$/, '');
-			const fullPath = path.join(dir, file);
+			const filenameStem = path.basename(file).replace(/\.\w+$/, '');
+			const fullPath = path.join(directory, file);
 
-			if (done.has(stem) ||
+			if (done.has(filenameStem) ||
 				fullPath === parentFile ||
-				path.extname(file) !== ext ||
-				stem[0] === '_' ||
-				stem[0] === '.') {
+				path.extname(file) !== extension ||
+				filenameStem[0] === '_' ||
+				filenameStem[0] === '.') {
 				continue;
 			}
 
-			const exportKey = opts.camelize ? stem.replace(/-(\w)/g, (m, p1) => p1.toUpperCase()) : stem;
+			const exportKey = options.camelize ? filenameStem.replace(/-(\w)/g, (m, p1) => p1.toUpperCase()) : filenameStem;
 
-			ret[exportKey] = require(fullPath);
-			done.add(stem);
+			returnValue[exportKey] = require(fullPath);
+			done.add(filenameStem);
 		}
 	}
 
-	return ret;
+	return returnValue;
 };
 

@@ -8,7 +8,7 @@
 ## Install
 
 ```
-$ npm install --save import-modules
+$ npm install import-modules
 ```
 
 
@@ -23,7 +23,8 @@ $ npm install --save import-modules
 
 ```js
 const importModules = require('import-modules');
-const modules = importModules('dir');
+
+const modules = importModules('directory');
 
 console.log(modules);
 //=> {fooBar: [Function], bazFaz: [Function]}
