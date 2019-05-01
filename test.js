@@ -1,13 +1,13 @@
 import test from 'ava';
-import m from '.';
+import importModules from '.';
 
-test(t => {
-	t.deepEqual(m('fixture'), {
+test('main', t => {
+	t.deepEqual(importModules('fixture'), {
 		fooFoo: 'foo',
 		barBar: 'bar'
 	});
-	t.deepEqual(Object.keys(m('fixture', {camelize: false})), ['bar-bar', 'foo-foo']);
-	t.deepEqual(Object.keys(m()), ['index', 'package']);
-	t.deepEqual(m('fixture/empty'), {});
-	t.deepEqual(m('non-existent'), {});
+	t.deepEqual(Object.keys(importModules('fixture', {camelize: false})), ['bar-bar', 'foo-foo']);
+	t.deepEqual(Object.keys(importModules()), ['index', 'package']);
+	t.deepEqual(importModules('fixture/empty'), {});
+	t.deepEqual(importModules('non-existent'), {});
 });

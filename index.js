@@ -9,13 +9,16 @@ const parentDir = path.dirname(parentFile);
 
 module.exports = (dir, opts) => {
 	dir = path.resolve(parentDir, dir || '');
-	opts = Object.assign({camelize: true}, opts);
+	opts = {
+		camelize: true,
+		...opts
+	};
 
 	let files;
 
 	try {
 		files = fs.readdirSync(dir);
-	} catch (err) {
+	} catch (error) {
 		return {};
 	}
 
@@ -23,6 +26,7 @@ module.exports = (dir, opts) => {
 	const ret = {};
 
 	// Adhere to the Node.js require algorithm by trying each extension in order
+	// eslint-disable-next-line node/no-deprecated-api
 	for (const ext of Object.keys(require.extensions)) {
 		for (const file of files) {
 			const stem = path.basename(file).replace(/\.\w+$/, '');

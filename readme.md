@@ -43,7 +43,7 @@ Directory to import modules from. Unless you've modified [`require.extensions`](
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### camelize
 
