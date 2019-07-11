@@ -7,11 +7,16 @@ delete require.cache[__filename];
 const parentFile = module.parent.filename;
 const parentDirectory = path.dirname(parentFile);
 
+// The default extensions used by NodeJS require().
+// Previously we relied on the now deprecated `require.extensions`.
+const extensions = new Set(['.js', '.json', '.node']);
+
 module.exports = (directory, options) => {
 	directory = path.resolve(parentDirectory, directory || '');
 
 	options = {
 		camelize: true,
+		extensions,
 		...options
 	};
 
@@ -25,11 +30,7 @@ module.exports = (directory, options) => {
 	const done = new Set();
 	const returnValue = {};
 
-	// The default extensions used by NodeJS require().
-	// Previously we relied on the now deprecated `require.extensions`.
-	const extensions = new Set(['.js', '.json', '.node']);
-
-	for (const extension of extensions) {
+	for (const extension of options.extensions) {
 		for (const file of files) {
 			const filenameStem = path.basename(file).replace(/\.\w+$/, '');
 			const fullPath = path.join(directory, file);
