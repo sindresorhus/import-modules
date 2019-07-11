@@ -25,9 +25,11 @@ module.exports = (directory, options) => {
 	const done = new Set();
 	const returnValue = {};
 
-	// Adhere to the Node.js require algorithm by trying each extension in order
-	// eslint-disable-next-line node/no-deprecated-api
-	for (const extension of Object.keys(require.extensions)) {
+	// The default extensions used by NodeJS require().
+	// Previously we relied on the now deprecated `require.extensions`.
+	const extensions = new Set(['.js', '.json', '.node']);
+
+	for (const extension of extensions) {
 		for (const file of files) {
 			const filenameStem = path.basename(file).replace(/\.\w+$/, '');
 			const fullPath = path.join(directory, file);
