@@ -2,10 +2,10 @@
 const fs = require('fs');
 const path = require('path');
 
-// Prevent caching of this module so module.parent is always accurate
+// Prevent caching of this module so module.parent is always accurate.
 delete require.cache[__filename];
-const parentFile = module.parent.filename;
-const parentDirectory = path.dirname(parentFile);
+const parentFile = module.parent && module.parent.filename;
+const parentDirectory = path.dirname(parentFile || '.');
 
 // The default file extensions used by `require()`.
 const extensions = new Set(['.js', '.json', '.node']);
