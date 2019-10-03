@@ -7,11 +7,15 @@ delete require.cache[__filename];
 const parentFile = module.parent.filename;
 const parentDirectory = path.dirname(parentFile);
 
+// The default file extensions used by `require()`.
+const extensions = new Set(['.js', '.json', '.node']);
+
 module.exports = (directory, options) => {
 	directory = path.resolve(parentDirectory, directory || '');
 
 	options = {
 		camelize: true,
+		extensions,
 		...options
 	};
 
@@ -25,9 +29,7 @@ module.exports = (directory, options) => {
 	const done = new Set();
 	const returnValue = {};
 
-	// Adhere to the Node.js require algorithm by trying each extension in order
-	// eslint-disable-next-line node/no-deprecated-api
-	for (const extension of Object.keys(require.extensions)) {
+	for (const extension of options.extensions) {
 		for (const file of files) {
 			const filenameStem = path.basename(file).replace(/\.\w+$/, '');
 			const fullPath = path.join(directory, file);
