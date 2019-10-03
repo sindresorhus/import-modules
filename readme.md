@@ -40,7 +40,7 @@ console.log(modules);
 Type: `string`<br>
 Default: `__dirname`
 
-Directory to import modules from. Unless you've set the `extension` option, that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
+Directory to import modules from. Unless you've set the `extensions` option, that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
 
 #### options
 
