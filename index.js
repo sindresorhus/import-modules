@@ -7,8 +7,7 @@ delete require.cache[__filename];
 const parentFile = module.parent.filename;
 const parentDirectory = path.dirname(parentFile);
 
-// The default extensions used by NodeJS require().
-// Previously we relied on the now deprecated `require.extensions`.
+// The default file extensions used by `require()`.
 const extensions = new Set(['.js', '.json', '.node']);
 
 module.exports = (directory, options) => {
