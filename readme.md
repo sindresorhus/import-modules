@@ -33,14 +33,14 @@ console.log(modules);
 
 ## API
 
-### importModules([directory], [options])
+### importModules(directory?, options?)
 
 #### directory
 
 Type: `string`<br>
 Default: `__dirname`
 
-Directory to import modules from. Unless you've set the `extensions` option, that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
+Directory to import modules from. Unless you've set the `fileExtensions` option, that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
 
 #### options
 
@@ -53,7 +53,7 @@ Default: `true`
 
 Convert dash-style names (`foo-bar`) to camel-case (`fooBar`).
 
-##### extensions
+##### fileExtensions
 
 Type: `string[]`<br>
 Default: `['.js', '.json', '.node']`
@@ -66,8 +66,3 @@ File extensions to look for. Order matters.
 - [import-from](https://github.com/sindresorhus/import-from) - Import a module from a given path
 - [import-cwd](https://github.com/sindresorhus/import-cwd) - Import a module from the current working directory
 - [import-lazy](https://github.com/sindresorhus/import-lazy) - Import a module lazily
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

@@ -8,14 +8,14 @@ const parentFile = module.parent && module.parent.filename;
 const parentDirectory = path.dirname(parentFile || '.');
 
 // The default file extensions used by `require()`.
-const extensions = new Set(['.js', '.json', '.node']);
+const fileExtensions = new Set(['.js', '.json', '.node']);
 
 module.exports = (directory, options) => {
 	directory = path.resolve(parentDirectory, directory || '');
 
 	options = {
 		camelize: true,
-		extensions,
+		fileExtensions,
 		...options
 	};
 
@@ -29,14 +29,14 @@ module.exports = (directory, options) => {
 	const done = new Set();
 	const returnValue = {};
 
-	for (const extension of options.extensions) {
+	for (const fileExtension of options.fileExtensions) {
 		for (const file of files) {
 			const filenameStem = path.basename(file).replace(/\.\w+$/, '');
 			const fullPath = path.join(directory, file);
 
 			if (done.has(filenameStem) ||
 				fullPath === parentFile ||
-				path.extname(file) !== extension ||
+				path.extname(file) !== fileExtension ||
 				filenameStem[0] === '_' ||
 				filenameStem[0] === '.') {
 				continue;
