@@ -55,10 +55,11 @@ Convert dash-style names (`foo-bar`) to camel-case (`fooBar`).
 
 ##### extensions
 
-Type: `iterable`<br>
-Default: `new Set(['.js', '.json', '.node'])`
+Type: `string[]`<br>
+Default: `['.js', '.json', '.node']`
 
-Defaults to the current `require.extensions` (deprecated) in NodeJS for extensions. Order is important for correct lookup priority.
+File extensions to look for. Order matters.
+
 
 ## Related
 
