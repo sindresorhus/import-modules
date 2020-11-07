@@ -16,7 +16,7 @@ $ npm install import-modules
 
 ```
 .
-└── dir
+└── directory
     ├── foo-bar.js
     └── baz-faz.js
 ```
