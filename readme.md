@@ -51,7 +51,7 @@ Type: `object`
 Type: `boolean`<br>
 Default: `true`
 
-Convert dash-style names (`foo-bar`) to camel-case (`fooBar`).
+Convert dash-style names (`foo-bar`) and snake-style names (`foo_bar`) to camel-case (`fooBar`).
 
 ##### fileExtensions
 
