@@ -42,7 +42,7 @@ module.exports = (directory, options) => {
 				continue;
 			}
 
-			const exportKey = options.camelize ? filenameStem.replace(/-(\w)/g, (m, p1) => p1.toUpperCase()) : filenameStem;
+			const exportKey = options.camelize ? filenameStem.replace(/[-_](\w)/g, (m, p1) => p1.toUpperCase()) : filenameStem;
 
 			returnValue[exportKey] = require(fullPath);
 			done.add(filenameStem);
