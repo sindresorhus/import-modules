@@ -1,16 +1,14 @@
-# import-modules [![Build Status](https://travis-ci.org/sindresorhus/import-modules.svg?branch=master)](https://travis-ci.org/sindresorhus/import-modules)
+# import-modules
 
 > Import all modules in a directory
 
-*This module is intentionally simple. Not interested in more features.*
-
+*This package is intentionally simple. Not interested in more features.*
 
 ## Install
 
 ```
 $ npm install import-modules
 ```
-
 
 ## Usage
 
@@ -30,14 +28,13 @@ console.log(modules);
 //=> {fooBar: [Function], bazFaz: [Function]}
 ```
 
-
 ## API
 
 ### importModules(directory?, options?)
 
 #### directory
 
-Type: `string`<br>
+Type: `string`\
 Default: `__dirname`
 
 Directory to import modules from. Unless you've set the `fileExtensions` option, that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
@@ -48,18 +45,17 @@ Type: `object`
 
 ##### camelize
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Convert dash-style names (`foo-bar`) and snake-style names (`foo_bar`) to camel-case (`fooBar`).
 
 ##### fileExtensions
 
-Type: `string[]`<br>
+Type: `string[]`\
 Default: `['.js', '.json', '.node']`
 
 File extensions to look for. Order matters.
-
 
 ## Related
 
