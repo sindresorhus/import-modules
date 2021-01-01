@@ -1,4 +1,4 @@
-# import-modules [![Build Status](https://travis-ci.org/sindresorhus/import-modules.svg?branch=master)](https://travis-ci.org/sindresorhus/import-modules)
+# import-modules
 
 > Import all modules in a directory
 
