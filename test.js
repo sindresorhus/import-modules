@@ -14,8 +14,7 @@ test('main', t => {
 });
 
 test('non-existent directory', t => {
-	const error = t.throws(() => {
+	t.throws(() => {
 		importModules('non-existent');
-	});
-	t.true(error.message.includes('no such file or directory'));
+	}, {message: /\bno such file or directory\b/});
 });
