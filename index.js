@@ -22,8 +22,8 @@ module.exports = (directory, options) => {
 	let files;
 	try {
 		files = fs.readdirSync(directory);
-	} catch (_) {
-		return {};
+	} catch (err) {
+		throw err;
 	}
 
 	const done = new Set();
