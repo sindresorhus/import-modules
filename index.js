@@ -12,7 +12,6 @@ const fileExtensions = new Set(['.js', '.json', '.node']);
 
 module.exports = (directory, options) => {
 	directory = path.resolve(parentDirectory, directory || '');
-
 	options = {
 		camelize: true,
 		fileExtensions,
@@ -22,8 +21,8 @@ module.exports = (directory, options) => {
 	let files;
 	try {
 		files = fs.readdirSync(directory);
-	} catch (err) {
-		throw err;
+	} catch (error) {
+		throw error;
 	}
 
 	const done = new Set();

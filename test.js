@@ -11,5 +11,11 @@ test('main', t => {
 	t.deepEqual(Object.keys(importModules('fixture', {camelize: false, fileExtensions: ['.xjs']})), ['non-standard']);
 	t.deepEqual(Object.keys(importModules()), ['index', 'package']);
 	t.deepEqual(importModules('fixture/empty'), {});
-	t.deepEqual(importModules('non-existent'), {});
+});
+
+test('non-existent directory', t => {
+	const error = t.throws(() => {
+		importModules('non-existent');
+	});
+	t.true(error.message.includes('no such file or directory'));
 });
