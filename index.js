@@ -19,12 +19,7 @@ module.exports = (directory, options) => {
 		...options
 	};
 
-	let files;
-	try {
-		files = fs.readdirSync(directory);
-	} catch (_) {
-		return {};
-	}
+	const files = fs.readdirSync(directory);
 
 	const done = new Set();
 	const returnValue = {};
