@@ -1,11 +1,11 @@
 import process from 'node:process';
 import {expectType} from 'tsd';
-import importModules, {Module} from './index.js';
+import importModules from './index.js';
 
 const currentDirectory: string = process.cwd();
 
-expectType<Partial<Record<string, Module>>>(importModules());
-expectType<Partial<Record<string, Module>>>(importModules(currentDirectory));
-expectType<Partial<Record<string, Module>>>(importModules(currentDirectory, {fileExtensions: ['.js']}));
-expectType<Partial<Record<string, Module>>>(importModules(currentDirectory, {camelize: false, fileExtensions: ['.js']}));
-expectType<Partial<Record<string, Module>>>(importModules(currentDirectory, {fileExtensions: []}));
+expectType<Record<string, unknown>>(importModules());
+expectType<Record<string, unknown>>(importModules(currentDirectory));
+expectType<Record<string, unknown>>(importModules(currentDirectory, {fileExtensions: ['.js']}));
+expectType<Record<string, unknown>>(importModules(currentDirectory, {camelize: false, fileExtensions: ['.js']}));
+expectType<Record<string, unknown>>(importModules(currentDirectory, {fileExtensions: []}));
