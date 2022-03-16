@@ -18,14 +18,10 @@ export interface Options {
 	readonly fileExtensions?: string[];
 }
 
-/* eslint-disable @typescript-eslint/ban-types */
-type Module = Function[];
-
 /**
-Import all modules in a directory
+Import all modules in a directory.
 
-@param directory
-@param options
+@param directory - Directory to import modules from. Unless you've set the `fileExtensions` option, that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
 
 @example
 
@@ -39,7 +35,9 @@ console.log(modules);
 //=> {fooBar: [Function], bazFaz: [Function]}
 ```
 */
-export default function importModules(
+declare function importModules(
 	directory?: string,
 	options?: Options,
-): Partial<Record<string, Module>>;
+): unknown;
+
+export = importModules;
