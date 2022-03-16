@@ -38,6 +38,6 @@ console.log(modules);
 declare function importModules(
 	directory?: string,
 	options?: Options,
-): Partial<Record<string, unknown>>;
+): Record<string, unknown>;
 
 export = importModules;
