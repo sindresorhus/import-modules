@@ -16,12 +16,18 @@ export interface Options {
 	@default ['.js', '.json', '.node']
 	*/
 	readonly fileExtensions?: string[];
+
+	/**
+	 * Enables recursion
+	 * @default false
+	 */
+	readonly recursive?: boolean;
 }
 
 /**
 Import all modules in a directory.
 
-@param directory - Directory to import modules from. Unless you've set the `fileExtensions` option, that means any `.js`, `.json`, `.node` files, in that order. Does not recurse. Ignores the caller file and files starting with `.` or `_`.
+@param directory - Directory to import modules from. Unless you've set the `fileExtensions` option, that means any `.js`, `.json`, `.node` files, in that order. Ignores the caller file and files starting with `.` or `_`.
 
 @example
 
