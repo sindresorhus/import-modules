@@ -35,7 +35,7 @@ console.log(modules);
 //=> {fooBar: [Function], bazFaz: [Function]}
 ```
 */
-export default function importModules(
+export default function importModules<T=unknown>(
 	directory?: string,
 	options?: Options,
-): Record<string, unknown>;
+): Record<string, T>;
